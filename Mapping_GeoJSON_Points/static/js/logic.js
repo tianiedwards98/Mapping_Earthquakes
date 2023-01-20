@@ -2,7 +2,10 @@
 console.log("working");
 
 // Create the map object with center at the San Francisco airport.
-let map = L.map('mapid').setView([37.5, -122.5], 10);
+//let map = L.map('mapid').setView([37.5, -122.5], 10);
+
+// Create the map object with center and zoom level.
+let map = L.map('mapid').setView([30, 30], 2);
 
 // We create the tile layer that will be the background of our map.
 // We create the tile layer that will be the background of our map.
@@ -11,9 +14,20 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
     maxZoom: 18,
     accessToken: API_KEY
 });
-
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map); 
+
+// Accessing the airport GeoJSON URL
+let airportData = "https://raw.githubusercontent.com/tianiedwards98/Mapping_Earthquakes/main/majorAirports.json";
+
+// Grabbing our GeoJSON data.
+d3.json(airportData).then(function(data) {
+  console.log(data);
+// Creating a GeoJSON layer with the retrieved data.
+L.geoJSON(data).addTo(map);
+});
+
+
 
 // Add GeoJSON data.
 let sanFranAirport =
@@ -52,3 +66,4 @@ L.geoJSON(sanFranAirport, {
     layer.bindPopup();
    }
 }).addTo(map);
+

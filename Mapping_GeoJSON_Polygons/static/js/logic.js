@@ -51,12 +51,6 @@ let torontoData = "https://raw.githubusercontent.com/tianiedwards98/Mapping_Eart
 // Accessing the airport GeoJSON URL
 let airportData = "https://raw.githubusercontent.com/tianiedwards98/Mapping_Earthquakes/main/majorAirports.json";
 
-// Create a style for the lines.
-let myStyle = {
-  color: "#ffffa1",
-  weight: 2
-}
-
 // Grabbing our GeoJSON data.
 d3.json(torontoHoods).then(function(data) {
   console.log(data);
